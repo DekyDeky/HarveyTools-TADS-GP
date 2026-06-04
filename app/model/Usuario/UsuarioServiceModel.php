@@ -6,7 +6,7 @@ use Exception;
 use App\Helpers\Validadores;
 use App\Helpers\UploadArquivo;
 
-class UsuarioService {
+class UsuarioServiceModel {
     private array $erros = [];
 
     public function getErrors(){
