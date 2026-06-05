@@ -2,9 +2,9 @@
 
 namespace App\Helpers;
 
-class Validadores {
+class Validations {
 
-    public static function checkVazio(String $data){
+    public static function checkEmpty(String $data){
         $cleanData = trim($data);
         if(empty($cleanData) || $cleanData === ""){
             return True;
@@ -13,7 +13,7 @@ class Validadores {
         }
     }
 
-    public static function checkStrTam(string $data, int $size, int $minSize = 0) {
+    public static function checkStrSize(string $data, int $size, int $minSize = 0) {
         $cleanData = trim($data);
     
         if(strlen($cleanData) > $size || strlen($cleanData) < $minSize){
@@ -24,7 +24,7 @@ class Validadores {
         
     }
 
-    public static function checkExtArquivo(array $file, array $extCheck) {
+    public static function checkExtFile(array $file, array $extCheck) {
         $filename = $file['name'] ?? '';
 
         if(!$filename){
@@ -38,6 +38,15 @@ class Validadores {
         }
 
         return True;
+    }
+
+    public static function checkEmailExists(\PDO $pdo, string $email){
+        $checkEmail = Consult::read($pdo, 'usuarios', ['idUsuario'], ['eq' => ['email' => $email]]);
+        if(count($checkEmail) > 0){
+            return True;
+        }else {
+            return False;
+        }
     }
 
 }

@@ -40,12 +40,13 @@ class Router {
 
         return [
             'GET' => [
-                '/' => fn () => self::load('UsuarioController', 'index'),
-                '/cadastrar' => fn () => self::load('UsuarioController', 'cadastrarGET'),
+                '/' => fn () => self::load('UserController', 'index'),
+                '/login' => fn () => self::load('UserController', 'index'),
+                '/cadastrar' => fn () => self::load('UserController', 'registerGET'),
             ],
 
             'POST' => [
-                '/cadastrarUsuario' => fn () => self::load('UsuarioController', 'cadastrarPOST'),
+                '/cadastrarUsuario' => fn () => self::load('UserController', 'registerPOST'),
             ]
         ];
 

@@ -43,7 +43,7 @@
 
             <button type="submit" class="btn btn-primary">Cadastrar</button>
 
-            <a class="login-link" href="">Fazer Login</a>
+            <a class="login-link" href="/login">Fazer Login</a>
         </form>
     </section>
 </body>

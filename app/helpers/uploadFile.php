@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use Exception;
 
-class UploadArquivo {
+class UploadFile {
 
     public static function renameFile(string $fileName, string $fileType, ?string $additionalId = ""){
         $ext = pathinfo(basename($fileName), PATHINFO_EXTENSION);
@@ -13,25 +13,24 @@ class UploadArquivo {
         return $newName;
     }
 
-    public static function upload(string $arquivoCaminho, array $arquivo){
-        $dirAlvo = __DIR__ . '/../../public/storage/' . $arquivoCaminho . "/";
+    public static function upload(string $filePath, array $file){
+        $dir = __DIR__ . '/../../public/storage/' . $filePath . "/";
 
         try {
-
-            if(!empty($arquivo['name'])){
+            if(empty($file['name'])){
                 throw new Exception("Não há arquivo!");
             }
             
-            if(!is_dir($dirAlvo)){
-                mkdir($dirAlvo, 0755, true);
+            if(!is_dir($dir)){
+                mkdir($dir, 0755, true);
             }
 
-            $novoNome = UploadArquivo::renameFile($arquivo['name'], 'fotoUsuario');
+            $newName = UploadFile::renameFile($file['name'], 'fotoUsuario');
 
-            if(move_uploaded_file($arquivo['tmp_name'], $dirAlvo . $novoNome)){
-                return $dirAlvo . $novoNome;
+            if(move_uploaded_file($file['tmp_name'], $dir . $newName)){
+                return '/' . $filePath . '/' . $newName;
             }else{
-                throw new Exception("Falha no envio do arquivo" . $novoNome);
+                throw new Exception("Falha no envio do arquivo" . $newName);
             }
 
         }catch (\Throwable $e){

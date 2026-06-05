@@ -2,9 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Model\Usuario\UsuarioServiceModel;
+use App\Helpers\Validations;
+use App\Model\User\UserServiceModel;
 
-class UsuarioController {
+class UserController {
 
     private \PDO $pdo;
 
@@ -18,19 +19,21 @@ class UsuarioController {
         include __DIR__ . '/../view/user/loginView.php';
     }
 
-    public function cadastrarGET(){ /* Chama a view */ 
+    public function registerGET(){ /* Chama a view */ 
         session_start();
 
         include __DIR__ . '/../view/user/cadastroView.php';
     }
 
-    public function cadastrarPOST(){ /* é chamada quando o botão de cadastrar é clicado. */
+    public function registerPOST(){ /* é chamada quando o botão de cadastrar é clicado. */
         $novoUsuario = $_POST; /* Recebe dados e arquivos da view */ 
         $arquivos = $_FILES;
 
+        
+
         header('Content-Type: application/json; charset=utf-8');
 
-        $service = new UsuarioServiceModel(); /* Chama a classe de Serviços de Usuário */
+        $service = new UserServiceModel(); /* Chama a classe de Serviços de Usuário */
 
         $cadastro = $service->cadastrar($this->pdo, $novoUsuario, $arquivos); /* Chama a função de cadastrar e passa os dados para ela */
 
