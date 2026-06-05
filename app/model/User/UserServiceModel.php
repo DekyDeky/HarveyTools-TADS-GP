@@ -2,6 +2,7 @@
 
 namespace App\Model\User;
 
+use App\Helpers\Consult;
 use App\Helpers\UploadFile;
 use Exception;
 use App\Helpers\Validations;
@@ -49,9 +50,6 @@ class UserServiceModel {
     }
 
     public function cadastrar(\PDO $pdo, array $data, array $file){
-
-
-
         try {
 
             if($this->validacao($data, $file['userFoto'], $pdo)){
@@ -94,6 +92,31 @@ class UserServiceModel {
                 'tipo' => 'excessao',
                 'sessao' => 'UsuarioService',
                 'mensagem' => $e->getMessage()
+            ];
+        }
+
+    }
+
+    public function login(\PDO $pdo, array $data){
+
+        try {
+
+            $getLogin = Consult::read($pdo, 'usuarios', ['idUsuario', 'senha'], ['eq' => ['email' => $data['userEmail']]]);
+            
+            if(is_array(reset($getLogin)) || empty($getLogin)){
+                throw new Exception("Falha ao identificar conta");
+            }
+
+            if(password_verify($data['userPassword'], $getLogin['senha'])) return ['type' => 'success'];
+            else {
+                throw new Exception("Senha incorreta");
+            }            
+            
+        }catch (Exception $e){
+            return [
+                'type' => 'exception',
+                'section' => 'login',
+                'message' => $e->getMessage()
             ];
         }
 

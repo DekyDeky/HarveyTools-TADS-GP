@@ -19,6 +19,28 @@ class UserController {
         include __DIR__ . '/../view/user/loginView.php';
     }
 
+    public function loginPOST(){
+        session_start();
+
+        $service = new UserServiceModel();
+        
+        $dataUser = $_POST; 
+
+        $login = $service->login($this->pdo, $dataUser);
+
+        header('Content-Type: application/json; charset=utf-8');
+        
+        if($login['type'] === 'success'){
+            echo json_encode([
+                'type' => 'success',
+                'mensagem' => 'Login efetuado com sucesso!',
+                'link' => '/test'
+            ]);
+        }else {
+            echo JSON_ENCODE($login);
+        }
+    }
+
     public function registerGET(){ /* Chama a view */ 
         session_start();
 

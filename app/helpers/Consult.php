@@ -50,7 +50,7 @@ class Consult {
 
             $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-            if(count($result) > 1){
+            if(count($result) > 1 || !$result){
                 return $result;
             }else {
                 return reset($result);

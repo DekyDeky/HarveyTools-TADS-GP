@@ -43,9 +43,11 @@ class Router {
                 '/' => fn () => self::load('UserController', 'index'),
                 '/login' => fn () => self::load('UserController', 'index'),
                 '/cadastrar' => fn () => self::load('UserController', 'registerGET'),
+                '/test' => fn () => self::load('DebugController', 'index') //Para testes apenas!
             ],
 
             'POST' => [
+                '/logarUsuario' => fn () => self::load('UserController', 'loginPOST'),
                 '/cadastrarUsuario' => fn () => self::load('UserController', 'registerPOST'),
             ]
         ];
