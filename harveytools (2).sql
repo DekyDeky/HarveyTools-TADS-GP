@@ -116,6 +116,29 @@ INSERT INTO `jogadores` (`jogID`, `Nickname`, `jogCamp`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `personagens`
+--
+
+CREATE TABLE IF NOT EXISTS `personagens` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `campID` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `classe` varchar(255) NOT NULL,
+  `atributos` text NOT NULL,
+  `defesa` int(11) NOT NULL,
+  `pontos_vida` int(11) NOT NULL,
+  `recurso` int(11) NOT NULL,
+  `inventario` text DEFAULT NULL,
+  `talentos_magias` text DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`campID`) REFERENCES `campanhas` (`campID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mestres`
 --
 
