@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Monomakh&display=swap');
+@import url('./general/input.css');
+
+:root {
+
+    --bg-color: #f8f5f2;
+
+    --font: "Monomakh", system-ui;
+    --font-color: #4a8953;
+    --font-alt-color: #2d0e6c;
+
+    --input-bg: #c0b4cd;
+    
+    --btn-text-color: var(--bg-color);
+
+}
+
+body {
+    background-color: #f8f5f2;
+    font-family: var(--font);
+    color: var(--font-color);
+}
+

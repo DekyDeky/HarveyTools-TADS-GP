@@ -11,7 +11,6 @@ form.addEventListener("submit", async (e) => {
     const loginUser = await fetchData(form, '/logarUsuario', formData);
 
     if(loginUser.type === 'success'){
-        //console.log(loginUser);
         window.location.href = loginUser.link;
     }else {
         console.log(loginUser);

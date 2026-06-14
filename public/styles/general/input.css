@@ -1,0 +1,68 @@
+.input-form {
+    width: 350px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    width: 100%;
+}
+
+.input-container input {
+    background-color: var(--input-bg);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+
+    color: var(--font-color)
+}
+
+.input-label {
+    margin-bottom: .5rem;
+    font-size: 1.25rem;
+}
+
+.input-file-label {
+    width: 100%;
+    background-color: var(--input-bg);
+    color: var(--font-color);
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+
+    border-radius: 5px;
+}
+
+.input-btn {
+    background-color: var(--font-color);
+    color: var(--btn-text-color);
+    font-family: var(--font);
+    font-weight: 700;
+    font-size: 1.5rem;
+
+    width: 350px;
+    border: none;
+}
+
+.input-btn:hover {
+    background-color: var(--input-bg);
+    border: none;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.input-columns {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.input-section {
+    width: 300px;
+}

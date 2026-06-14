@@ -2,12 +2,36 @@
     height: 100vh;
 }
 
-.login-group {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
+.login-title h1 {
+    font-size: 3.5rem;
+    text-align: center;
+    font-weight: 700;
 }
 
-.login-label {
-    margin-right: 1rem;
+.login-link {
+    color: var(--font-alt-color);
+    transition: .2s;
+}
+
+.login-link:hover {
+    color: var(--input-bg);
+    transition: .2s;
+}
+
+.register {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.register-section {
+    width: 50vw;
+}
+
+.register-picture {
+    height: 100vh;
+    width: 50vw;
+    background-image: url('../../assets/userService/RegisterScreenPhoto.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
