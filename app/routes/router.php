@@ -43,12 +43,19 @@ class Router {
                 '/' => fn () => self::load('UserController', 'index'),
                 '/login' => fn () => self::load('UserController', 'index'),
                 '/cadastrar' => fn () => self::load('UserController', 'registerGET'),
+                '/bestiarios' => fn() => self::load('BestiaryController', 'index'),
+                '/bestiario' => fn() => self::load('BestiaryController', 'bestiaryGET'),
+                '/editar-bestiario' => fn() => self::load('BestiaryController', 'editBestiaryGET'),
+                '/criar-besta' => fn() => self::load('BestiaryController', 'createBeastGET'),
                 '/test' => fn () => self::load('DebugController', 'index') //Para testes apenas!
             ],
 
             'POST' => [
                 '/logarUsuario' => fn () => self::load('UserController', 'loginPOST'),
                 '/cadastrarUsuario' => fn () => self::load('UserController', 'registerPOST'),
+                '/criarBestaPOST' => fn () => self::load('BestiaryController', 'createBeastPOST'),
+                '/editarBestaPOST' => fn () => self::load('BestiaryController', 'editBestiaryPOST'),
+                '/deletarBestaPOST' => fn () => self::load('BestiaryController', 'deleteBeastPOST'),
             ]
         ];
 
@@ -62,11 +69,11 @@ class Router {
             $uri = Uri::get('path');
 
             if (!isset($routes[$request])) {          
-                throw new Exception('A rota não existe');
+                throw new Exception('A rota não existe' . $request . $uri);
             }
 
             if (!array_key_exists($uri, $routes[$request])) {
-                throw new Exception('A rota não existe');
+                throw new Exception('A rota não existe' . $request . $uri);
             }
 
             $router = $routes[$request][$uri];

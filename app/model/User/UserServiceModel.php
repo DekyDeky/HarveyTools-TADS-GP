@@ -107,10 +107,15 @@ class UserServiceModel {
                 throw new Exception("Falha ao identificar conta");
             }
 
-            if(password_verify($data['userPassword'], $getLogin['senha'])) return ['type' => 'success'];
+            if(password_verify($data['userPassword'], $getLogin['senha'])) {
+                $_SERVER['idUser'] = $getLogin['idUsuario'];
+                return ['type' => 'success'];
+            }
             else {
                 throw new Exception("Senha incorreta");
             }            
+
+            
             
         }catch (Exception $e){
             return [

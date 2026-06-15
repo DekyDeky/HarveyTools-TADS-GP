@@ -23,3 +23,15 @@ export async function fetchData(form, url, formdata) {
 
     return false;
 }
+
+export async function simpleFetch(link, json = []){
+    const res = await fetch(link, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: json
+    });
+
+    return await res.json();
+}

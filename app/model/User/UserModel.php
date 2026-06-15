@@ -6,7 +6,7 @@ use Exception;
 use App\Helpers\Validadores;
 use App\Helpers\UploadArquivo;
 
-class UsuarioModel {
+class UserModel {
 
     private int $id;
     private String $email;

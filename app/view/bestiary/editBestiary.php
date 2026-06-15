@@ -1,17 +1,3 @@
-<?php
-include("connectionBD.php");
-
-$id = (int)$_GET['id'];
-
-$sql = "SELECT * FROM bestiario WHERE bestaID = $id";
-$result = mysqli_query($conn, $sql);
-
-$besta = mysqli_fetch_assoc($result);
-
-$sqlCamp = "SELECT campID, nomeCamp FROM campanhas";
-$resultCamp = mysqli_query($conn, $sqlCamp);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +8,7 @@ $resultCamp = mysqli_query($conn, $sqlCamp);
 
 <h1>Editar Besta</h1>
 
-<form action="updateBeast.php" method="POST">
+<form method="POST" id="beastEditForm" enctype="multipart/form-data">
 
     <input type="hidden" name="bestaID" value="<?= $besta['bestaID'] ?>">
 
@@ -75,7 +61,7 @@ $resultCamp = mysqli_query($conn, $sqlCamp);
 
     <select name="bestaCampID" required>
 
-        <?php while($camp = mysqli_fetch_assoc($resultCamp)) { ?>
+        <?php foreach($resultCamp as $camp) { ?>
 
             <option value="<?= $camp['campID'] ?>"
                 <?= ($camp['campID'] == $besta['bestaCampID']) ? 'selected' : '' ?>>
@@ -92,5 +78,6 @@ $resultCamp = mysqli_query($conn, $sqlCamp);
 
 </form>
 
+<script type="module" src="/scripts/Bestiary/editBeast.js" defer></script>
 </body>
 </html>
