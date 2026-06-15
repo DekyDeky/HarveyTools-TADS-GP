@@ -34,7 +34,7 @@ class UserController {
             echo json_encode([
                 'type' => 'success',
                 'mensagem' => 'Login efetuado com sucesso!',
-                'link' => '/test'
+                'link' => '/campanhas'
             ]);
         }else {
             echo JSON_ENCODE($login);
