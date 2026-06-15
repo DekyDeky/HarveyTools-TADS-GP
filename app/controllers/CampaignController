@@ -1,0 +1,63 @@
+<?php
+namespace app\controllers;
+
+use app\model\CampaignService;
+
+class CampaignController {
+    
+    // Método para mostrar a lista de campanhas do mestre.
+    public function indexGet(): void {
+        session_start();
+        $masterId = $_SESSION['user_id'];
+
+        $service = new CampaignService();
+        $campaigns = $service->getCampaignsByMaster($masterId);
+
+        foreach ($campaigns as $key => $campaign) {
+            $campaigns[$key]['players'] = $service->getCampaignPlayers($campaign['id']);
+        }
+
+        include __DIR__ . '/../../view/management_view.php';
+    }
+
+    // Método para criar uma nova campanha.
+    public function createPost(): void {
+        session_start();
+        $masterId = $_SESSION['user_id'] ?? 1;
+        $campaignData = $_POST;
+
+        header('Content-Type: application/json; charset=utf-8');
+
+        $service = new CampaignService();
+        $result = $service->createCampaign($campaignData, $masterId);
+
+        if ($result['tipo'] === 'sucesso') {
+            echo json_encode([
+                'tipo' => 'sucesso',
+                'mensagem' => $result['mensagem'],
+                'link' => '/campaigns'
+            ]);
+        } else {
+            echo json_encode($result);
+        }
+    }
+
+    // Método para convidar um jogador para a campanha.
+    public function invitePOST(): void {
+        session_start();
+        $inviteData = $_POST;
+
+        header('Content-Type: application/json; charset=utf-8');
+
+        $service = new CampaignService();
+        $result = $service->invitePlayer($inviteData['campaignId'], $inviteData['playerEmail']);
+
+        echo json_encode($result);
+    }
+
+    // Método para mostrar a página de tracker da campanha.
+    public function trackerGET(): void {
+        session_start();
+        include __DIR__ . '/../../view/tracker_view.php';
+    }
+}
