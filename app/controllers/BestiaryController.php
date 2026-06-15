@@ -70,7 +70,7 @@ class BestiaryController {
         if($result['type'] === 'success'){
             echo json_encode([
                 'type' => 'success',
-                'link' => '/bestiario?id='.$data['bestaCampID']
+                'link' => '/campanha?id='.$data['bestaCampID']
             ]);
         }else {
             echo json_encode($result);
@@ -105,7 +105,7 @@ class BestiaryController {
         if($result['type'] === 'success'){
             echo json_encode([
                 'type' => 'success',
-                'link' => '/bestiario?id='.$data['bestaCampID']
+                'link' => '/campanha?id='.$data['bestaCampID']
             ]);
         }else {
             echo json_encode($result);

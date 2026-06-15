@@ -13,10 +13,11 @@
 
 <?php include __DIR__ . '/../components/header.php'; ?>
 
-<h1 class="text-center"><?=$campResult['nomeCamp']?> - Bestiary</h1>
+<h1 class="text-center"><?=$campResult['nomeCamp']?></h1>
+<h2 class="text-center">Bestiary</h2>
 
 <div class="bestiary-btns">
-    <a href="/bestiarios" type="button" class="btn btn-general">Voltar para Campanhas</a>
+    <a href="/campanhas" type="button" class="btn btn-general">Voltar para Campanhas</a>
     <a href="/criar-besta" type="button" class="btn btn-general">Criar Nova Besta</a>
 </div>
 
@@ -104,7 +105,7 @@
 
 <br>
 
-    <h1 class="text-center">Characters</h1>
+    <h2 class="text-center">Characters</h2>
     <?php if (empty($characters)): ?>
     <p>Nenhum personagem cadastrado nesta campanha.</p>
 <?php else: ?>

@@ -56,7 +56,7 @@ class CharacterController {
         $charModel = new CharacterModel($this->pdo);
 
         if ($charModel->create($_POST)) {
-            header("Location: /bestiario?id=" . $_POST['campID']);
+            header("Location: /campanha?id=" . $_POST['campID']);
             exit;
         }
 
