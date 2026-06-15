@@ -19,6 +19,15 @@
     color: var(--font-color)
 }
 
+.input-container select {
+    background-color: var(--input-bg);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+
+    color: var(--font-color)
+}
+
 .input-label {
     margin-bottom: .5rem;
     font-size: 1.25rem;

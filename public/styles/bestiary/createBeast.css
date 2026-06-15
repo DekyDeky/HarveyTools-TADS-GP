@@ -1,0 +1,8 @@
+.create-beast {
+    padding: 1rem;
+}
+
+.input-container-group {
+    display: flex;
+    gap: 1rem;
+}

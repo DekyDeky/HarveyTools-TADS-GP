@@ -1,0 +1,51 @@
+.character-form-container {
+    padding: 1rem;
+}
+
+.character-form {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.character-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.character-row div {
+    flex: 1;
+    min-width: 200px;
+}
+
+.field-full {
+    width: 100%;
+    flex: 1 0 100%;
+}
+
+.character-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.character-form input,
+.character-form select,
+.character-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.character-form textarea {
+    resize: vertical;
+}
+
+.character-name {
+    margin-bottom: 20px;
+}

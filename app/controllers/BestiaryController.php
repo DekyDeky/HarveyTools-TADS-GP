@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Helpers\Consult;
 use App\Model\Bestiary\BeastModel;
+use App\Model\CampaignModel;
+use App\Model\CharacterModel;
 
 class BestiaryController {
 
@@ -20,6 +22,7 @@ class BestiaryController {
         if(isset($result['campID'])){
             $result = [$result];
         }
+        
 
         include __DIR__ . '/../view/bestiary/selCampaing.php';
     }
@@ -30,6 +33,15 @@ class BestiaryController {
         $idBestiary = $_GET['id'];
         
         $result = Consult::read($this->pdo, 'bestiario', ['*'], ['eq' => ['bestaCampID' => $idBestiary]]);
+        $campResult = Consult::read($this->pdo, 'campanhas', ['nomeCamp'], ['eq' => ['campID' => $idBestiary]]);
+
+        $campaignModel = new CampaignModel($this->pdo);
+        $campaigns = $campaignModel->getAll();
+
+        $characters = [];
+
+        $charModel = new CharacterModel($this->pdo);
+        $characters = $charModel->getByCampaign($idBestiary);
 
         include __DIR__ . '/../view/bestiary/viewBeastiary.php';
     }

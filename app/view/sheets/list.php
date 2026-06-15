@@ -2,12 +2,17 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Visualizar Personagens</title>
+    <title>Sheets - Harvey Tools</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/sheets/list.css">
 </head>
 <body>
+
+    <?php include __DIR__ . '/../components/header.php'; ?>
     <h1>Visualizar Personagens por Campanha</h1>
 
-    <form method="GET" action="/fichas/criar">
+    <form method="GET" action="/fichas">
         <input type="hidden" name="action" value="list">
         <label for="campID">Selecione a Campanha:</label>
         <select name="campID" id="campID" onchange="this.form.submit()">

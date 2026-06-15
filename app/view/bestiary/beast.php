@@ -2,60 +2,110 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Create Beast</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Beast - Harvey Tools</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/bestiary/createBeast.css">
 </head>
 
 <body>
 
-<h1>Create Beast</h1>
+<?php include __DIR__ . '/../components/header.php'; ?>
 
-<form method="POST" id="beastForm" enctype="multipart/form-data">
+<section class="create-beast">
 
-    <label>Nome:</label><br>
-    <input type="text" name="bestaNome" required><br><br>
+    <h1>Create Beast</h1>
 
-    <label>Patamar:</label><br>
-    <input type="text" name="bestaPatamar" required><br><br>
+    <form method="POST" id="beastForm" enctype="multipart/form-data">
 
-    <label>ND:</label><br>
-    <input type="number" name="bestaND" required><br><br>
+        <div class="input-container-group">
+            <div class="input-container">
+                <label>Nome:</label>
+                <input type="text" name="bestaNome" required>
+            </div>
+        </div>
 
-    <label>Attack:</label><br>
-    <input type="text" name="bestaAtaque" required><br><br>
+        <div class="input-container-group">
 
-    <label>Damage:</label><br>
-    <input type="text" name="bestaDano" required><br><br>
+            <div class="input-container">
+                <label>Patamar:</label>
+                <input type="text" name="bestaPatamar" required>
+            </div>
+            
 
-    <label>Defense:</label><br>
-    <input type="number" name="bestaDefesa" required><br><br>
+            <div class="input-container">
+                <label>ND:</label>
+                <input type="number" name="bestaND" required>
+            </div>
 
-    <label>HP:</label><br>
-    <input type="number" name="bestaPV" required><br><br>
+        </div>
 
-    <label>Pericia:</label><br>
-    <input type="text" name="bestaPericia" required><br><br>
+        <div class="input-container-group">
 
-    <label>DC:</label><br>
-    <input type="number" name="bestaCD" required><br><br>
+            <div class="input-container">
+                <label>Attack:</label>
+                <input type="text" name="bestaAtaque" required>
+            </div class="input-container">
 
-    <label>Campanha:</label><br>
+            <div class="input-container">
+                <label>Damage:</label>
+                <input type="text" name="bestaDano" required>
+            </div class="input-container">
 
-    <select name="bestaCampID" required>
-        <option value="">Select Campaign</option>
+            <div class="input-container">
+                <label>DC:</label>
+                <input type="number" name="bestaCD" required>
+            </div>
 
-        <?php foreach($resultCamp as $row) { ?>
-            <option value="<?= $row['campID'] ?>">
-                <?= $row['nomeCamp'] ?>
-            </option>
-        <?php } ?>
+        </div>
 
-    </select>
+        <div class="input-container-group">
 
-    <br><br>
+            <div class="input-container">
+                <label>HP:</label>
+                <input type="number" name="bestaPV" required>
+            </div>
+            
+            <div class="input-container">
+                <label>Defense:</label>
+                <input type="number" name="bestaDefesa" required>
+            </div>
 
-    <button type="submit">Save Beast</button>
+        </div>
 
-</form>
+        <div class="input-container-group">
+
+            <div class="input-container">
+                <label>Pericia:</label>
+                <input type="text" name="bestaPericia" required>
+            </div>
+
+        </div>
+
+        
+        <div class="input-container-group">
+
+            <div class="input-container">
+                <label>Campanha:</label>
+                <select name="bestaCampID" required>
+                    <option value="">Select Campaign</option>
+                    
+                    <?php foreach($resultCamp as $row) { ?>
+                    <option value="<?= $row['campID'] ?>">
+                        <?= $row['nomeCamp'] ?>
+                    </option>
+                    <?php } ?>
+                    
+                </select>
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn input-btn">Save Beast</button>
+
+    </form>
+</section>
 
 <script type="module" src="/scripts/Bestiary/createBeast.js" defer></script>
 </body>

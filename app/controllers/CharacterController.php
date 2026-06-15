@@ -32,7 +32,8 @@ class CharacterController {
             $characters = $charModel->getByCampaign($selectedCampaignId);
         }
 
-        include __DIR__ . '/../view/list.php';
+
+        include __DIR__ . '/../view/sheets/list.php';
     }
 
     /**
@@ -42,6 +43,7 @@ class CharacterController {
     public function createGET() {
         $campaignModel = new CampaignModel($this->pdo);
         $campaigns = $campaignModel->getAll();
+
 
         include __DIR__ . '/../view/sheets/form.php';
     }
@@ -54,7 +56,7 @@ class CharacterController {
         $charModel = new CharacterModel($this->pdo);
 
         if ($charModel->create($_POST)) {
-            header("Location: /fichas?campID=" . $_POST['campID']);
+            header("Location: /bestiario?id=" . $_POST['campID']);
             exit;
         }
 

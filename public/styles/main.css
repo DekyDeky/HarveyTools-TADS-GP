@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Monomakh&display=swap');
 @import url('./general/input.css');
+@import url('./general/header.css');
 
 :root {
 
@@ -21,3 +22,13 @@ body {
     color: var(--font-color);
 }
 
+.btn-general {
+    background-color: var(--font-color);
+    color: var(--btn-text-color);
+    font-family: var(--font);
+    font-weight: 700;
+}
+
+.btn-general:hover {
+    background-color: var(--input-bg);
+}
