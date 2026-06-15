@@ -47,6 +47,8 @@ class Router {
                 '/bestiario' => fn() => self::load('BestiaryController', 'bestiaryGET'),
                 '/editar-bestiario' => fn() => self::load('BestiaryController', 'editBestiaryGET'),
                 '/criar-besta' => fn() => self::load('BestiaryController', 'createBeastGET'),
+                '/fichas' => fn() => self::load('CharacterController', 'index'),
+                '/fichas/criar' => fn() => self::load('CharacterController', 'createGET'),
                 '/test' => fn () => self::load('DebugController', 'index') //Para testes apenas!
             ],
 
@@ -56,6 +58,7 @@ class Router {
                 '/criarBestaPOST' => fn () => self::load('BestiaryController', 'createBeastPOST'),
                 '/editarBestaPOST' => fn () => self::load('BestiaryController', 'editBestiaryPOST'),
                 '/deletarBestaPOST' => fn () => self::load('BestiaryController', 'deleteBeastPOST'),
+                '/fichas/criar' => fn() => self::load('CharacterController', 'createPOST'),
             ]
         ];
 

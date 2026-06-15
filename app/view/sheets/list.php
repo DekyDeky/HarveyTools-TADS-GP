@@ -7,7 +7,7 @@
 <body>
     <h1>Visualizar Personagens por Campanha</h1>
 
-    <form method="GET" action="index.php">
+    <form method="GET" action="/fichas/criar">
         <input type="hidden" name="action" value="list">
         <label for="campID">Selecione a Campanha:</label>
         <select name="campID" id="campID" onchange="this.form.submit()">

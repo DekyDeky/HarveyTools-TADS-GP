@@ -11,7 +11,7 @@
         <p style="color: red;"><?= $error ?></p>
     <?php endif; ?>
 
-    <form method="POST" action="index.php?action=create">
+    <form method="POST" action="/fichas/criar">
         <p>
             <label for="campID">Campanha:</label><br>
             <select name="campID" id="campID" required>
